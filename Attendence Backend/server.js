@@ -6,10 +6,11 @@ const { default: mongoose } = require("mongoose")
 const app=express()
 app.use(express.json())
 app.use(cors({
-    origin: "*", // Or specify your frontend URL
-    methods: ["GET", "POST", "PUT", "DELETE"],
-    allowedHeaders: ["Content-Type", "Authorization"]
-  }));
+  origin: "*",
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  allowedHeaders: ["Content-Type", "Authorization"]
+}));
+
   
 dotenv.config()
 

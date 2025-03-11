@@ -1,14 +1,14 @@
-const express=require("express")
-const router=express.Router()
-const users=require("../../Models/userSchema")
-const bcrypt=require("bcryptjs")
+const express = require("express");
+const router = express.Router();
+const users = require("../../Models/userSchema");
+const bcrypt = require("bcryptjs");
 
 router.post("/", async (req, res) => {
     try {
         console.log("Received request:", req.body);  // ✅ Debugging
 
-        const { username, email, password } = req.body;
-        if (!username || !email || !password) {
+        const { email, password } = req.body;
+        if (!email || !password) {
             console.log("Validation failed");  // ✅ Debugging
             return res.status(400).json({ message: "All fields are required" });
         }
@@ -20,7 +20,7 @@ router.post("/", async (req, res) => {
         }
 
         const hashedPassword = await bcrypt.hash(password, 10);
-        const user = new users({ username, email, password: hashedPassword });
+        const user = new users({ email, password: hashedPassword });
 
         await user.save();
         console.log("User registered successfully");  // ✅ Debugging
@@ -31,4 +31,4 @@ router.post("/", async (req, res) => {
     }
 });
 
-module.exports=router
+module.exports = router;
