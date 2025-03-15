@@ -18,7 +18,7 @@ class _LoginPageState extends State<LoginPage> {
   Future<void> login() async {
     setState(() => isLoading = true);
 
-final String apiUrl = "http://192.168.21.136:5000/api/register"; // Keep this if correct
+final String apiUrl = "http://192.168.129.136:5000/api/register"; // Keep this if correct
 
     try {
       final response = await http.post(
@@ -29,9 +29,10 @@ final String apiUrl = "http://192.168.21.136:5000/api/register"; // Keep this if
           "password": passwordController.text.trim(),
         }),
       );
-
+      console.log("crt")
       final data = json.decode(response.body);
       setState(() => isLoading = false);
+      console.log("before")
 
       if (response.statusCode == 200) {
         ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Login Successful!")));
