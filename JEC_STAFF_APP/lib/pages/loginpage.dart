@@ -29,11 +29,9 @@ final String apiUrl = "http://192.168.129.136:5000/api/register"; // Keep this i
           "password": passwordController.text.trim(),
         }),
       );
-      console.log("crt")
       final data = json.decode(response.body);
       setState(() => isLoading = false);
-      console.log("before")
-
+    
       if (response.statusCode == 200) {
         ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Login Successful!")));
         // You can navigate to the HomePage or store the token
