@@ -19,8 +19,7 @@ mongoose.connect(process.env.MONGO_URL).then(()=> console.log("Mongo DB is conne
 app.use("/api/student", require("./Routes/studentRoutes"));
 app.use("/api/register", require("./Routes/auth/registerRoutes"));
 app.use("/api/login", require("./Routes/auth/loginRoutes"));
-app.use("/api/auth", require("./Routes/auth/forgot-password"));
-
+app.use("/api/forgot-password", require("./Routes/auth/forgot-password"));
 
 const PORT=process.env.PORT || 5000
 app.listen(PORT,()=>{ console.log(`server running on port ${PORT}`)})
